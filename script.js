@@ -31,14 +31,27 @@ function handleSubmit() {
 }
 
 function compareWord(userWord) {
-  if (userWord === todayWord) {
-    console.log("correnct");
-  } else {
-    console.log("not correnct");
+  let firstRegex = /s..../;
+  let secondRegex = /.h.../;
+  let thirdRegex = /..a../;
+  let fourthRegex = /...r./;
+  let fifthRegex = /....d/;
+  let regexes = [firstRegex, secondRegex, thirdRegex, fourthRegex, fifthRegex];
+  let result = regexes.map((element) => userWord.match(element));
+  let same = result.every((el) => el !== null);
+  let notAtAll = result.every((el) => el === null);
+  let aFew = result.some((el) => el === null);
+  console.log(notAtAll, aFew);
+  if (same) {
+    keyboards.forEach((keyboard) => {
+      if (userWord.includes(keyboard.textContent)) {
+        keyboard.classList.add("green");
+      }
+    });
   }
-
-  //   will use regex to compare words and get the different alpahbet to apply the color feedback to the keyboard
 }
+
+//   will use regex to compare words and get the different alpahbet to apply the color feedback to the keyboard
 
 submitButton.addEventListener("click", () => {
   let word = handleSubmit();
