@@ -31,6 +31,11 @@ function handleSubmit() {
 }
 
 function compareWord(userWord) {
+  let regex = /[shard]/gi;
+  let globalResult = userWord.match(regex);
+  globalResult.reduce((acc, current) => {
+    for(let i=0;)
+  },[]);
   let firstRegex = /s..../;
   let secondRegex = /.h.../;
   let thirdRegex = /..a../;
@@ -39,13 +44,25 @@ function compareWord(userWord) {
   let regexes = [firstRegex, secondRegex, thirdRegex, fourthRegex, fifthRegex];
   let result = regexes.map((element) => userWord.match(element));
   let same = result.every((el) => el !== null);
-  let notAtAll = result.every((el) => el === null);
   let aFew = result.some((el) => el === null);
-  console.log(notAtAll, aFew);
   if (same) {
     keyboards.forEach((keyboard) => {
       if (userWord.includes(keyboard.textContent)) {
         keyboard.classList.add("green");
+      }
+    });
+  } else if (aFew) {
+    let correctLetter = [];
+    for (let i = 0; i < result.length; i++) {
+      if (result[i] !== null) {
+        correctLetter.push(userWord[i]);
+      }
+    }
+    keyboards.forEach((keyboard) => {
+      if (correctLetter.includes(keyboard.textContent)) {
+        keyboard.classList.add("green");
+      } else if (globalResult.includes(keyboard.textContent)) {
+        keyboard.classList.add("yellow");
       }
     });
   }
