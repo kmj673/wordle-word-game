@@ -27,7 +27,20 @@ function handleSubmit() {
     lettersArr.push(letter.textContent);
   });
   let word = lettersArr.join("");
-  console.log(word);
+  return word;
 }
 
-submitButton.addEventListener("click", handleSubmit);
+function compareWord(userWord) {
+  if (userWord === todayWord) {
+    console.log("correnct");
+  } else {
+    console.log("not correnct");
+  }
+
+  //   will use regex to compare words and get the different alpahbet to apply the color feedback to the keyboard
+}
+
+submitButton.addEventListener("click", () => {
+  let word = handleSubmit();
+  compareWord(word);
+});
