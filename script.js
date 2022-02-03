@@ -33,9 +33,15 @@ function handleSubmit() {
 function compareWord(userWord) {
   let regex = /[shard]/gi;
   let globalResult = userWord.match(regex);
-  globalResult.reduce((acc, current) => {
-    for(let i=0;)
-  },[]);
+  for (let i = 0; i < userWord.length; i++) {
+    if (!globalResult.includes(userWord[i])) {
+      keyboards.forEach((keyboard) => {
+        if (userWord[i] === keyboard.textContent) {
+          keyboard.classList.add("grey");
+        }
+      });
+    }
+  }
   let firstRegex = /s..../;
   let secondRegex = /.h.../;
   let thirdRegex = /..a../;
