@@ -1,3 +1,5 @@
+*at this point, the answer is set as "shard"*
+
 # wordle-word-game
 
 ## Focused Issues
@@ -21,3 +23,4 @@
 - connect the API for word's list.
 - set the session information for user
 - check the mobile interface as well.
+
