@@ -16,3 +16,8 @@
 - hard mode game
 - share the result feature
 
+## Things to improve
+- change the html tags for semantic html
+- connect the API for word's list.
+- set the session information for user
+- check the mobile interface as well.
